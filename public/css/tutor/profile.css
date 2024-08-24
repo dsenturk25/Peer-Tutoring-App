@@ -1,0 +1,103 @@
+.inner-main-wrapper {
+  width: 100%;
+  padding: 5%;
+  display: flex;
+  overflow-x: hidden;
+  background-color: #eee;
+}
+
+.profile-overview-top-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-overview-top-content-image {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.profile-overview-top-content-image img {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  position: absolute;
+}
+
+.profile-overview-top-content-name {
+  font-weight: 500;
+}
+
+.profile-overview {
+  width: 30%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  height: fit-content;
+}
+
+.profile-overview-bio-edit-content-description {
+  margin: 10px 0;
+  font-size: 12px;
+  color: #777;
+  font-weight: light;
+}
+
+.profile-edit-main-wrapper {
+  width: 60%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+.profile-edit-main-select-skills-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.each-feature-edit-wrapper {
+  margin-bottom: 30px;
+}
+
+.profile-image-input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.edit-label-image-top-content {
+  font-size: 12px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  text-align: center;
+  position: absolute;
+  transition: all 0.2s ease 0;
+  background-color: #7777776b;
+  color: #efe;
+}
+
+.profile-overview-bio-edit-content-input {
+  width: 80%;
+  border: 0;
+  padding: 10px;
+  background-color: #f8f8f8;
+}
+
+.profile-overview-input-wrapper {
+  width: 90%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}

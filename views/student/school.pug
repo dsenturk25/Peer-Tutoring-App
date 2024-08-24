@@ -1,0 +1,22 @@
+extends ./partials/header.pug
+block content 
+  .all-main-wrapper
+    .header-top-wrapper
+      .header-top-title School Page
+      .header-top-content 
+        a(href="/student").header-top-open-slot-button Find tutors
+        .header-top-open-slot-rating-content(style="background-color:white;color:#464646;") 
+          .header-top-content-student-core-info #{student.name} #{student.surname}
+          span(style="font-size:10px;") Student
+        .student-account-placeholder-photo
+          img(src="/res/images/student.svg", alt="student placeholder photo")
+    .inner-main-wrapper
+      .main-school-display-head-wrapper 
+        .banner-image-wrapper-absolute 
+          img(src=school.banner_image, alt=school.name)
+        .main-school-display-head-core-info-content 
+          .main-school-display-profile-image
+            img(src=school.profile_image, alt=school.name)
+          .main-school-display-text-content 
+            span(style="font-size: 28px; font-weight: 600;") #{school.name}
+            span(style="font-size: 14px; font-weight: 200;") #{school.corporate_email.split("@")[1]} | #{school.address}

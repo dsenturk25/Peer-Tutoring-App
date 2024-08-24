@@ -1,0 +1,92 @@
+extends ./partials/header.pug
+block content 
+  .all-main-wrapper
+    .header-top-wrapper
+      .header-top-title My lessons
+      .header-top-content 
+        a(href="/tutor/slot").header-top-open-slot-button Open slot +
+        .header-top-open-slot-rating-content(style=`background-color:${tutor.rating <= 1 ? "red" : tutor.rating <= 2.5 ? "orange" : tutor.rating <= 4 ? "yellow" : tutor.rating <= 5 ? "green" : "gray"}`) #{tutor.rating ? tutor.rating : 0}
+    .inner-main-wrapper 
+      .each-session-group-wrapper
+        .each-session-group-title Upcoming lessons
+        .each-session-group-wrapper-sessions-wrapper
+          - let validCountOngoing = 0
+          each session in sessions
+            if session.stage == "ongoing"
+              - validCountOngoing++
+              .each-session-content
+                .each-session-content-infos
+                  .each-session-content-date-info #{(new Date(session.date)).toDateString()}
+                  .each-session-content-tutor-info
+                    each student in students 
+                      if `${student._id}` == `${session.studentId}`
+                        .each-session-content-tutor-core-info #{student.name} #{student.surname}
+                        .each-session-content-time-info #{session.startTime}-#{session.finishTime}
+                        a(href=tutor.link).each-session-content-zoom-link-info Click to join Zoom
+                        div(class=`each-session-actions-cancel-lesson each-session-change-status-submit-button` style=`${session.stage == "ongoing" ? "background-color: #6670ff" : "#66ffcf"}`) #{session.stage == "ongoing" ? "Mark session as complete" : "Revert session as ongoin"}
+                        div(style="display:none;") #{session._id}
+                        div(style="display:none;") #{session.stage}
+                        .each-session-actions-cancel-lesson(class="each-session-cancel-submit-button") Cancel lesson
+                .each-session-content-actions
+                  .rate-tutor-title-preview-content 
+                    .each-session-top-content
+                      .each-session-content-time-info(style="font-size:14px") Rating given by the student
+                      .each-session-content-rating-preview-content #{session.rating ? session.rating : "?"}
+                    .each-session-content-session-feedback-container #{session.studentReflection ? session.studentReflection : "Student's feedback note will be available once given."}
+            if validCountOngoing == 0
+              .each-session-content-time-info(style="font-size:14px") We will list your ongoing lessons here.
+              .each-session-content-time-info(style="font-size:14px") There seems to be no ongoing lesson.
+      .each-session-group-wrapper
+        .each-session-group-title Completed lessons
+        .each-session-group-wrapper-sessions-wrapper
+          - let validCountCompleted = 0
+          each session in sessions
+            if session.stage == "completed"
+              - validCountCompleted++
+              .each-session-content
+                .each-session-content-infos
+                  .each-session-content-date-info #{(new Date(session.date)).toDateString()}
+                  .each-session-content-tutor-info
+                    each student in students 
+                      if `${student._id}` == `${session.studentId}`
+                        .each-session-content-tutor-core-info #{student.name} #{student.surname}
+                        .each-session-content-time-info #{session.startTime}-#{session.finishTime}
+                    div(class=`each-session-actions-cancel-lesson each-session-change-status-submit-button` style=`${session.stage == "ongoing" ? "background-color: #6670ff" : "background-color: #66ffcf"}`) #{session.stage == "ongoing" ? "Mark session as complete" : "Revert session as ongoing"}
+                    div(style="display:none;") #{session._id}
+                    div(style="display:none;") #{session.stage}
+                .each-session-content-actions
+                  .rate-tutor-title-preview-content 
+                    .each-session-top-content
+                      .each-session-content-time-info(style="font-size:14px") Rating given by the student
+                      .each-session-content-rating-preview-content #{session.rating ? session.rating : "?"}
+                    .each-session-content-session-feedback-container #{session.studentReflection ? session.studentReflection : "Student's feedback note will be available once given."}
+          if validCountCompleted == 0
+            .each-session-content-time-info(style="font-size:14px") We will list your completed lessons here.
+            .each-session-content-time-info(style="font-size:14px") There seems to be no completed lesson.
+      .each-session-group-wrapper
+        .each-session-group-title Canceled lessons
+        .each-session-group-wrapper-sessions-wrapper
+          - let validCountCanceled = 0
+          each session in sessions
+            if session.stage == "canceled"
+              - validCountCanceled++
+              .each-session-content
+                .each-session-content-infos
+                  .each-session-content-date-info #{(new Date(session.date)).toDateString()}
+                  .each-session-content-tutor-info
+                    each student in students 
+                      if `${student._id}` == `${session.studentId}`
+                        .each-session-content-tutor-core-info #{student.name} #{student.surname}
+                        .each-session-content-time-info #{session.startTime}-#{session.finishTime}
+                        a(href=tutor.link).each-session-content-zoom-link-info Click to join Zoom
+                        .each-session-actions-cancel-lesson Cancel lesson
+                .each-session-content-actions
+                  .rate-tutor-title-preview-content 
+                    .each-session-content-time-info(style="font-size:14px") Rate this meeting
+                    .each-session-content-rating-preview-content 2.5
+                  input(type="range" step="0.5" min="0" max="5" class="slider" disabled).each-session-actions-rate-lesson 
+                  textarea(cols="30", rows="5" disabled).each-session-actions-write-reflection
+            if validCountCanceled == 0
+              .each-session-content-time-info(style="font-size:14px") We will list your canceled lessons here.
+              .each-session-content-time-info(style="font-size:14px") There seems to be no canceled lesson.
+          

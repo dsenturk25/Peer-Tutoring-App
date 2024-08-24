@@ -1,0 +1,49 @@
+extends ./partials/header.pug
+block content 
+  - let subjects = ["mathematics", "physics", "turkish", "english", "computer science", "economy", "business management", "visual arts", "social sciences"]
+  .all-main-wrapper
+    .header-top-wrapper
+      .header-top-title Profile
+      .header-top-content 
+        a(href="/tutor/slot").header-top-open-slot-button Open slot +
+        .header-top-open-slot-rating-content #{tutor.rating}
+    .inner-main-wrapper
+      .profile-overview 
+        .profile-overview-top-content
+          .profile-overview-top-content-image
+            input(type="file").profile-image-input#profile-image-input
+            img#profile-image-content(style="z-index: 10;" src=`${tutor.profile_photo ? tutor.profile_photo : "/res/images/profile.png"}`, alt="Tutor Profile Photo")
+          .profile-overview-top-content-name 
+            div #{tutor.name} #{tutor.surname}
+            .each-title-content-type(style="color:#efe") Tutor
+        .profile-overview-bio-edit-content
+          .profile-overview-bio-edit-content-title Edit your bio 
+          .profile-overview-bio-edit-content-description This will be visible to the students and will help them select you among other tutors.
+          textarea(cols="30", rows="10")#bio-edit-content #{tutor.about}
+          .submit-button#save-bio-button Save bio
+      .profile-edit-main-wrapper 
+        .each-feature-edit-wrapper 
+          .profile-overview-bio-edit-content-title Skills 
+          .profile-overview-bio-edit-content-description Select your skills among the subjects below to help students understand your qualifications better.
+          .profile-edit-main-select-skills-wrapper 
+            each subject in subjects 
+              .each-checkbox-wrapper
+                .each-checkbox-checkbox(class=`${tutor.subjects.includes(subject) ? "checkbox-checkbox-checked" : ""}`)
+                .each-checkbox-content #{subject}
+        .each-feature-edit-wrapper 
+          .profile-overview-bio-edit-content-title Program declaration in #{school.name} at level #{tutor.level}
+          .profile-overview-bio-edit-content-description You can provide the program you follow in your school to help your students lean more.
+          select#select-program-input.select-program-input(name="select-program-input")
+            option(value="null") Not declared
+            option(value="meb") MEB Program (TYT/AYT)
+            option(value="ib") International Baccaleurate (IB) 
+            option(value="ap") Advanced Placement (AP)
+        .each-feature-edit-wrapper
+          .profile-overview-bio-edit-content-title Personal Online Meeting Link
+          .profile-overview-bio-edit-content-description Please add a link for your personal zoom meeting. The link will be visible to your students when you arrange a slot.
+          .profile-overview-input-wrapper
+            input(type="text" placeholder="insert your zoom link" value=tutor.link).profile-overview-bio-edit-content-input#tutor-zoom-link
+            .submit-button#submit-zoom-link(style="font-size: 14px;") Save
+        .each-feature-edit-wrapper
+          .profile-overview-bio-edit-content-title Your current rating is #{tutor.rating}, #{tutor.rating > 2.5 ? "above average" : "below average"}
+          .profile-overview-bio-edit-content-description You can add humour and interaction to your lessons to get better ratings from your students.

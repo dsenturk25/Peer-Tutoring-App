@@ -1,0 +1,52 @@
+
+.inner-main-wrapper {
+  width: 110%;
+  height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+}
+
+.main-school-display-head-wrapper {
+  width: 100%;
+  height: 200px;
+  position: relative;
+}
+
+.banner-image-wrapper-absolute {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+.banner-image-wrapper-absolute img {
+  width: 100%;
+  height: 100%;
+}
+
+.main-school-display-head-core-info-content {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  top: 120px;
+  color: #f8f8f8;
+  left: 20px;
+}
+
+.main-school-display-profile-image {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 100%;
+  margin-right: 20px;
+}
+
+.main-school-display-profile-image img {
+  height: 100%;
+}
+
+.main-school-display-text-content {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,38 @@
+extends ./partials/header.pug
+block content 
+  .all-main-wrapper
+    .header-top-wrapper
+      .header-top-title Overview
+      .header-top-content 
+        a(href="/tutor/slot").header-top-open-slot-button Open slot +
+        .header-top-open-slot-rating-content #{tutor.rating}
+    .inner-main-wrapper
+      .profile-overview 
+        .profile-overview-bio-edit-content
+          .profile-overview-bio-edit-content-title Add a new available time
+          .profile-overview-bio-edit-content-description Add dates and times that you will be available for a meeting. You can cancel later.
+          .add-new-slot-wrapper
+            label Select an available day
+            input(type="date").add-new-slot-date-input#date-input
+            .add-new-slot-time-inputs 
+              label From
+              input(type="time").add-new-slot-each-time-input#start-time-input
+              label to
+              input(type="time").add-new-slot-each-time-input#finish-time-input
+            .submit-button#add-new-slot Open slot
+      .profile-edit-main-wrapper 
+        .profile-overview-bio-edit-content-title Available slots states
+        .profile-overview-bio-edit-content-description View past, ongoing and future slots; whether they are occupied or pending. You can cancel your sessions at any time, but remember to notify your student via email or a phone call.
+        div(style="font-size:10px; margin: 30px 0;") İSTANBUL (+03)
+        if slotDateMapping 
+          each eachDay in slotDateMapping
+            .each-day-wrapper
+              .each-day-date-title #{(new Date(eachDay[0].date)).toDateString()}
+              .profile-overview-bio-edit-content-description 
+                span(style="font-weight:600;") #{"Zoom "}
+                span as the meeting app 🖥️
+              .slot-times-wrapper
+                each eachTime in eachDay
+                  .each-slot-times-content #{eachTime.startTime} - #{eachTime.finishTime}
+        else
+          .no-available-days-warning No active available slots available

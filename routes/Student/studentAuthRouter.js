@@ -4,6 +4,8 @@ const router = express.Router();
 
 router.use(express.json());
 
+const loginPostController = require("../../controllers/Student/Auth/loginPost");
+
 router.get(
   "/edit-profile"  // edit profile get controller
 );
@@ -17,39 +19,9 @@ router.post(
 )
 
 router.post(
-  "/register",  // register post controller
-);
-
-router.post(
   "/login",  // login post controller
+  loginPostController
 );
 
-router.get(
-  "/login"  // login get controller
-)
-
-router.get(
-  "/register"  // register post controller
-)
-
-router.get(
-  "/email_confirm"  // email_confirm get controller frontend
-)
-
-router.post(
-  "/auth/email_confirm"  // email_confirm post controller backend
-)
-
-router.get(
-  "/complete_account"  // complete_account get controller frontend
-)
-
-router.post(
-  "/complete_account"  // complete_account post controller frontend
-)
-
-router.post(
-  "/auth/resend_code"  // resend_code post controller frontend
-)
 
 module.exports = router;

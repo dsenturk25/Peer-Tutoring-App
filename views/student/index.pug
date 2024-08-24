@@ -1,0 +1,52 @@
+extends ./partials/header.pug
+block content 
+  .all-main-wrapper
+    .header-top-wrapper
+      .header-top-title Overview
+      .header-top-content 
+        a(href="/student").header-top-open-slot-button Find tutors
+        .header-top-open-slot-rating-content(style="background-color:white;color:#464646;") 
+          .header-top-content-student-core-info #{student.name} #{student.surname}
+          span(style="font-size:10px;") Student
+        .student-account-placeholder-photo
+          img(src="/res/images/student.svg", alt="student placeholder photo")
+    .inner-main-wrapper 
+      .tutor-filters-wrapper 
+      .tutor-content-wrapper 
+        each tutor in tutors 
+          .each-tutor-content
+            .each-tutor-left-infos-wrapper
+              .each-tutor-core-into-wrapper
+                .each-tutor-image 
+                  img(src=(tutor.profile_photo ? tutor.profile_photo : "/res/images/profile.png"), alt="Tutor image")
+                .each-tutor-core-info-text
+                  .each-tutor-core-info-text-title #{tutor.name} #{tutor.surname}
+                  .each-tutor-core-info-text-description from #{school.name}
+              .each-tutor-each-sub-wrapper 
+                .each-tutor-each-sub-wrapper-title Academic program detaıls
+                .each-tutor-each-sub-wrapper-description #{tutor.program ? tutor.program : "MEB"} program at level #{tutor.level}
+              .each-tutor-each-sub-wrapper 
+                .each-tutor-each-sub-wrapper-title Qualıfıed subjects / Currıcular skılls
+                .each-tutor-each-sub-wrapper-skills-wrapper
+                  each subject in tutor.subjects 
+                    .each-tutor-subject-skill-content #{subject}
+              .each-tutor-each-sub-wrapper 
+                .each-tutor-each-sub-wrapper-title Biography / Persona
+                .each-tutor-each-sub-wrapper-description #{tutor.about}
+            .each-tutor-right-slots-wrapper
+              .timezone-utc-content-content Istanbul (+03)
+              if tutorIdToOpenSlotMapping[`${tutor._id}`] && Object.keys(tutorIdToOpenSlotMapping[`${tutor._id}`]).length > 0
+                each eachDay in tutorIdToOpenSlotMapping[`${tutor._id}`]
+                  .each-day-wrapper
+                    .each-day-date-title #{(new Date(eachDay[0].date)).toDateString()}
+                    .profile-overview-bio-edit-content-description 
+                      span(style="font-weight:600;") #{"Zoom "}
+                      span as the meeting app 🖥️
+                    .slot-times-wrapper
+                      each eachTime in eachDay
+                        div(style="display:none;") #{eachTime.date}
+                        .each-slot-times-content(class=`${!eachTime.isAvailable ? "slot-time-occupied" : ""}`) #{eachTime.startTime} - #{eachTime.finishTime}
+                        div(style="display:none;") #{tutor._id}
+                        div(style="display:none;") #{eachTime._id}
+              else
+                .no-available-days-warning No active available slots available for #{tutor.name} #{tutor.surname}. Please check other tutors for availability.

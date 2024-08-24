@@ -4,45 +4,27 @@ const router = express.Router();
 
 router.use(express.json());
 
+const isTutorLoggedIn = require("../../middleware/isTutorAuth.js");
 
-router.get(
-  "/edit-profile"  // edit profile get controller
-);
-
-router.post(
-  "/edit-profile",  // edit profile post controller
-)
-
-router.post(
-  "/logout",  // logout post controller
-)
+const loginPostController = require("../../controllers/Tutor/Auth/loginPost");
+const registerPostController = require("../../controllers/Tutor/Auth/registerPost.js");
+const logoutPostController = require("../../controllers/Tutor/Auth/logoutPost.js");
 
 router.post(
   "/register",  // register post controller
+  registerPostController
 );
 
 router.post(
   "/login",  // login post controller
+  loginPostController
 );
 
-router.get(
-  "/email_confirm"  // email_confirm get controller frontend
-)
-
 router.post(
-  "/auth/email_confirm"  // email_confirm post controller backend
+  "/logout",
+  isTutorLoggedIn,
+  logoutPostController
 )
 
-router.get(
-  "/complete_account"  // complete_account get controller frontend
-)
-
-router.post(
-  "/complete_account"  // complete_account post controller frontend
-)
-
-router.post(
-  "/auth/resend_code"  // resend_code post controller frontend
-)
 
 module.exports = router;

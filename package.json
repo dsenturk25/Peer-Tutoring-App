@@ -5,11 +5,13 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon --ignore public/ app.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.635.0",
+    "@aws-sdk/s3-request-presigner": "^3.635.0",
     "@sendgrid/mail": "^7.7.0",
     "async": "^3.2.4",
     "aws-sdk": "^2.1353.0",
@@ -26,6 +28,7 @@
     "pug": "^3.0.2",
     "serve-favicon": "^2.5.0",
     "sharp": "^0.31.2",
-    "socket.io": "^4.6.1"
+    "socket.io": "^4.6.1",
+    "uuid": "^10.0.0"
   }
 }

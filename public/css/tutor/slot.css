@@ -1,0 +1,80 @@
+
+label {
+  font-size: 14px;
+}
+
+.inner-main-wrapper {
+  width: 100%;
+  padding: 5%;
+  display: flex;
+  overflow-x: hidden;
+  background-color: #eee;
+}
+
+
+.profile-overview-bio-edit-content-description {
+  margin: 10px 0;
+  font-size: 12px;
+  color: #777;
+  font-weight: light;
+}
+
+.profile-overview {
+  width: 30%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  height: fit-content;
+}
+
+.profile-edit-main-wrapper {
+  width: 60%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+.add-new-slot-wrapper {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.add-new-slot-date-input {
+  width: 100%;
+  border: 0;
+  font-size: 14px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.add-new-slot-each-time-input {
+  padding: 10px;
+  font-size: 14px;
+  border: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.no-available-days-warning {
+  width: 100%;
+  text-align: center;
+  color: #666666;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.each-day-date-title {
+  font-weight: 600;
+}
+
+.slot-times-wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.each-slot-times-content {
+  padding: 10px;
+  border: 1px solid #eee;
+  margin-right: 20px;
+}

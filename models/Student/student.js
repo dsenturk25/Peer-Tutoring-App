@@ -4,6 +4,7 @@ const hashpassword = require("../../utils/hashPassword");
 const verifypassword = require("../../utils/verifyPassword");
 const Application = require("../Application/application");
 const Tutor = require("../Tutor/tutor");
+const School = require("../School/school");
 const HomeworkReview = require("../HomeworkReview/homeworkReview");
 const Session = require("../Session/session");
 const { sendStudentConfirmationEmail } = require("../../utils/sendEmail");
@@ -47,7 +48,7 @@ const studentSchema = mongoose.Schema({
     required: true,
   },
 
-  school: {
+  schoolId: {
     type: String,
     trim: true,
     default: ""
@@ -65,16 +66,9 @@ const studentSchema = mongoose.Schema({
     }
   ],
 
-  gender: {
+  level: {
     type: String,
-    trim: true,
-    enum: ["m", "f", "o"],
-    default: "o"
-  },
-
-  class: {
-    type: String,
-    default: "0-0"
+    default: "0"
   },
 
   phone_number: {
@@ -83,31 +77,6 @@ const studentSchema = mongoose.Schema({
     default: ""
   },
 
-  country: {
-    type: String,
-    trim: true,
-    default: ""
-  },
-
-  city: {
-    type: String,
-    trim: true,
-    default: ""
-  },
-
-  isAccountCompleted: {
-    type: Boolean,
-    default: false
-  },
-
-  isEmailConfirmed: {
-    type: Boolean,
-    default: false
-  },
-
-  confirmation_code: {
-    type: Number,
-  },
 })
 
 studentSchema.statics.createStudent = function (body, callback) {
@@ -120,10 +89,7 @@ studentSchema.statics.createStudent = function (body, callback) {
 
   if (newStudent) {
 
-    newStudent.confirmation_code = createConfirmationCode();
-
     newStudent.save();
-    sendStudentConfirmationEmail(newStudent);
     return callback(null, newStudent);
   }
 
@@ -233,9 +199,9 @@ studentSchema.statics.confirmEmail = function (body, callback) {
 studentSchema.statics.updateConfirmationCode = function (body, callback) {
   Student.findById(body._id, (err, student) => {
     if (err, !student) return callback("bad_request");
-    student.confirmation_code = createConfirmationCode();
+
     student.save();
-    sendStudentConfirmationEmail(student);
+
     return callback(null, student);
   })
 }

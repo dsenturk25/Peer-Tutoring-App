@@ -19,9 +19,18 @@ const tutorSchema = mongoose.Schema({
     trim: true,
   },
 
+  about: {
+    type: String,
+    trim: true
+  },
+
   profile_photo: {
     type: String,
     default: ""
+  },
+
+  link: {
+    type: String,
   },
 
   email: {
@@ -44,9 +53,8 @@ const tutorSchema = mongoose.Schema({
     required: true,
   },
 
-  school: {
-    type: String,
-    trim: true,
+  schoolId: {
+    type: String, 
     default: ""
   },
 
@@ -62,58 +70,14 @@ const tutorSchema = mongoose.Schema({
     }
   ],
 
-  gender: {
+  level: {
     type: String,
-    trim: true,
-    enum: ["m", "f", "o"],
-    default: "o"
-  },
-
-  class: {
-    type: String,
-    default: "0-0"
-  },
-
-  phone_number: {
-    type: String,
-    trim: true,
-    default: ""
-  },
-
-  country: {
-    type: String,
-    trim: true,
-    default: ""
-  },
-
-  city: {
-    type: String,
-    trim: true,
-    default: ""
-  },
-
-  isAccountCompleted: {
-    type: Boolean,
-    default: false
-  },
-
-  isEmailConfirmed: {
-    type: Boolean,
-    default: false
-  },
-
-  confirmation_code: {
-    type: Number,
+    default: "0"
   },
 
   rating: {
     type: Number,
-    default: 0
-  },
-
-  link: {
-    type: String,
-    default: ""
+    default: 2.5
   },
 
   subjects: [
@@ -121,10 +85,6 @@ const tutorSchema = mongoose.Schema({
       type: String
     }
   ],
-
-  gpa: {
-    type: Number
-  },
 
   program: {
     type: String,
@@ -134,7 +94,7 @@ const tutorSchema = mongoose.Schema({
 
   availableTimes: [
     availableTime = {
-      day: {
+      date: {
         type: String
       },
       startTime: {
@@ -161,19 +121,19 @@ tutorSchema.statics.createTutor = function (body, callback) {
 
   if (newTutor) {
 
-    newTutor.confirmation_code = createConfirmationCode();
+    // newTutor.confirmation_code = createConfirmationCode();
 
     newTutor.save();
-    sendTutorConfirmationEmail(newTutor);
+    // sendTutorConfirmationEmail(newTutor);
     return callback(null, newTutor);
   }
 
   return callback("bad_request");
 }
 
-studentSchema.statics.loginTutor = function (body, callback) {
+tutorSchema.statics.loginTutor = function (body, callback) {
 
-  Student.findOne({ email: body.email }).then(student => {
+  Tutor.findOne({ email: body.email }).then(student => {
     if (!student) return callback("user_not_found");
 
     verifypassword(body.password, student.password, (res) => {
@@ -211,7 +171,7 @@ tutorSchema.statics.searchTutor = function (body, callback) {
       delete tutor.isAccountCompleted;
       delete tutor.sessions;
 
-      if (body.filter == "subject") {
+      if (body.filter == "name") {
         if ((tutor.name + " " + tutor.surname).includes(body.query)) {
           targetTutors.push(tutor);
           next();
@@ -223,11 +183,6 @@ tutorSchema.statics.searchTutor = function (body, callback) {
         }
       } else if (body.filter == "rating") {
         if (tutor.rating < body.upperRatingBoundary && tutor.rating > body.lowerRatingBoundary) {
-          targetTutors.push(tutor);
-          next();
-        }
-      } else if (body.filter == "gpa") {
-        if (tutor.rating < body.upperGpaBoundary && tutor.rating > body.lowerGpaBoundary) {
           targetTutors.push(tutor);
           next();
         }

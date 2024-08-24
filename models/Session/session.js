@@ -2,26 +2,24 @@
 const mongoose = require("mongoose");
 const hashpassword = require("../../utils/hashPassword");
 const verifypassword = require("../../utils/verifyPassword");
-const Project = require("../Projects/project");
-const Organization = require("../Organizations/organization");
 const { sendConfirmationEmail } = require("../../utils/sendEmail");
 const createConfirmationCode = require("../../utils/createConfirmationCode");
 const async = require("async");
 
 const sessionSchema = mongoose.Schema({
 
-  school: {
+  schoolId: {
     type: String,
     trim: true,
     default: ""
   },
 
-  tutor: {
-    type: mongoose.Types.ObjectId
+  tutorId: {
+    type: String
   },
 
-  student: {
-    type: mongoose.Types.ObjectId
+  studentId: {
+    type: String
   },
 
   date: {
@@ -33,40 +31,37 @@ const sessionSchema = mongoose.Schema({
   },
 
   finishTime: {
-    type: String
-  },
-
-  link: {
-    type: String
+    type: String,
+    default: ""
   },
 
   studentReflection: {
-    type: String
-  },
-
-  tutorReflection: {
-    type: String
-  },
-
-  tutorApproval: {
-    type: Boolean
-  },
-
-  studentApproval: {
-    type: Boolean
+    type: String,
+    default: ""
   },
 
   cancelMessage: {
-    type: String
+    type: String,
+    default: ""
   },
 
-  rejectMessage: {
-    type: String
-  }
-  ,
   stage: {
     type: String,
-    enum: ["request", "progress", "completed", "rejected", "canceled"]
+    enum: ["ongoing", "completed", "canceled"],
+    default: "ongoing"
+  },
+
+  rating: {
+    type: Number,
+  },
+
+  canceledBy: {
+    type: String,
+    enum: ["tutor", "student"]
+  },
+
+  canceledAt: {
+    type: Date
   }
 })
 
@@ -79,35 +74,6 @@ sessionSchema.statics.createSession = function (body, callback) {
     return callback(null, newSession);
   }
   return callback("bad_request");
-}
-
-sessionSchema.statics.approveStudent = function (body, callback) {
-  Session.findByIdAndUpdate(body.id, { studentApproval: true }, (err, session) => {
-    if (err) return callback(err);
-    if (session.studentApproval && session.tutorApproval) {
-      session.stage = "progress";
-      session.save();
-    }
-    return callback(null, session);
-  })
-}
-
-sessionSchema.statics.approveTutor = function (body, callback) {
-  Session.findByIdAndUpdate(body.id, { tutorApproval: true }, (err, session) => {
-    if (err) return callback(err);
-    if (session.studentApproval && session.tutorApproval) {
-      session.stage = "progress";
-      session.save();
-    }
-    return callback(null, session);
-  })
-}
-
-sessionSchema.statics.markSessionAsComplete = function (body, callback) {
-  Session.findByIdAndUpdate(body.sessionId, { stage: "completed" }, (err, session) => {
-    if (err) return callback(err);
-    return callback(session);
-  })
 }
 
 sessionSchema.statics.updateStudentReflection = function (body, callback) {
@@ -132,15 +98,6 @@ sessionSchema.statics.cancelSession = function (body, callback) {
     return callback(null, session);
   })
 }
-
-
-sessionSchema.statics.rejectSession = function (body, callback) {
-  Session.findByIdAndUpdate(body.sessionId, { stage: "rejected", rejectMessage: body.rejectMessage }, (err, session) => {
-    if (err) return callback(err);
-    return callback(null, session);
-  })
-}
-
 
 const Session = mongoose.model("session", sessionSchema);
 

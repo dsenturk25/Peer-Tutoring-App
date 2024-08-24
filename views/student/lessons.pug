@@ -1,0 +1,100 @@
+extends ./partials/header.pug
+block content 
+  .all-main-wrapper
+    .header-top-wrapper
+      .header-top-title My lessons
+      .header-top-content 
+        a(href="/student").header-top-open-slot-button Find tutors
+        .header-top-open-slot-rating-content(style="background-color:white;color:#464646;") 
+          .header-top-content-student-core-info #{student.name} #{student.surname}
+          span(style="font-size:10px;") Student
+        .student-account-placeholder-photo
+          img(src="/res/images/student.svg", alt="student placeholder photo")    
+    .inner-main-wrapper 
+      .each-session-group-wrapper
+        .each-session-group-title Upcoming lessons
+        .each-session-group-wrapper-sessions-wrapper
+          - let validCountOngoing = 0
+          each session in sessions
+            if session.stage == "ongoing"
+              - validCountOngoing++
+              .each-session-content
+                .each-session-content-infos
+                  .each-session-content-date-info #{(new Date(session.date)).toDateString()}
+                  .each-session-content-tutor-info
+                    each tutor in tutors 
+                      if `${tutor._id}` == `${session.tutorId}`
+                        .each-session-content-tutor-core-info #{tutor.name} #{tutor.surname}
+                        .each-session-content-time-info #{session.startTime}-#{session.finishTime}
+                        a(href=tutor.link).each-session-content-zoom-link-info Click to join Zoom
+                        .each-session-actions-cancel-lesson Cancel lesson
+                .each-session-content-actions
+                  .rate-tutor-title-preview-content 
+                    .each-session-content-time-info(style="font-size:14px") Rate this meeting
+                    .each-session-content-rating-preview-content 2.5
+                  input(type="range" step="0.5" min="0" max="5" class="slider" disabled).each-session-actions-rate-lesson 
+                  textarea(cols="30", rows="5" disabled).each-session-actions-write-reflection
+          if validCountOngoing == 0
+            .each-session-content-time-info(style="font-size:14px") We will list your ongoing lessons here.
+            .each-session-content-time-info(style="font-size:14px") There seems to be no ongoing lesson.
+      .each-session-group-wrapper
+        .each-session-group-title Completed lessons
+        .each-session-group-wrapper-sessions-wrapper
+          - let validCountCompleted = 0
+          each session in sessions
+            if session.stage == "completed"
+              - validCountCompleted++
+              .each-session-content
+                .each-session-content-infos
+                  .each-session-content-date-info #{(new Date(session.date)).toDateString()}
+                  .each-session-content-tutor-info
+                    each tutor in tutors 
+                      if `${tutor._id}` == `${session.tutorId}`
+                        .each-session-content-tutor-core-info #{tutor.name} #{tutor.surname}
+                        .each-session-content-time-info #{session.startTime}-#{session.finishTime}
+                        .each-session-content-zoom-link-info(style="color: lightgreen") Lesson completed
+                        .each-session-actions-cancel-lesson Cancel lesson
+                .each-session-content-actions
+                  .rate-tutor-title-preview-content 
+                    .each-session-content-time-info(style="font-size:14px") Rate and give feedback
+                    .each-session-content-rating-preview-content #{session.rating}
+                  .rate-tutor-inputs-area
+                    input(type="range" step="0.5" min="0" max="5" class="slider" value=session.rating).each-session-actions-rate-lesson 
+                    .rate-tutor-inputs-area-textarea-container
+                      textarea(cols="30", rows="2") #{session.studentReflection}
+                    .submit-button(style="font-size:14px;" class="save-feedback-submit-button") Save feedback
+                    div(style="display:none;") #{session._id}
+          if validCountCompleted == 0
+            .each-session-content-time-info(style="font-size:14px") We will list your completed lessons here.
+            .each-session-content-time-info(style="font-size:14px") There seems to be no completed lesson.
+      .each-session-group-wrapper
+        .each-session-group-title Canceled lessons
+        .each-session-group-wrapper-sessions-wrapper
+          - let validCountCanceled = 0
+          each session in sessions
+            if session.stage == "canceled"
+              - validCountCanceled++
+              .each-session-content
+                .each-session-content-infos
+                  .each-session-content-date-info #{(new Date(session.date)).toDateString()}
+                  .each-session-content-tutor-info
+                    each tutor in tutors 
+                      if `${tutor._id}` == `${session.tutorId}`
+                        .each-session-content-tutor-core-info #{tutor.name} #{tutor.surname}
+                        .each-session-content-time-info #{session.startTime}-#{session.finishTime}
+                        .each-session-content-time-info(style="font-size: 12px; max-width:100px;") Session canceled on #{(new Date(session.canceledAt)).toDateString()}
+                .each-session-content-actions
+                  .rate-tutor-title-preview-content 
+                    .each-session-content-time-info(style="font-size:14px; margin-right: 20px") Canceled by
+                    .each-session-content-time-info 
+                      if session.canceledBy == "tutor"
+                        each tutor in tutors 
+                          if `${tutor._id}` == `${session.tutorId}`
+                            span(style="font-size: 14px") #{tutor.name} #{tutor.surname}
+                      else 
+                        span(style="font-size: 14px") #{student.name} #{student.surname}
+                  .canceled-session-cancel-text-wrapper #{session.cancelMessage}
+            if validCountCanceled == 0
+              .each-session-content-time-info(style="font-size:14px") We will list your canceled lessons here.
+              .each-session-content-time-info(style="font-size:14px") There seems to be no canceled lesson.
+          

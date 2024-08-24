@@ -5,11 +5,11 @@ module.exports = (req, res, next) => {
 
   if (req.session && req.session.tutor && req.session.tutor != {}) {
     Tutor.findTutorById(req.session.tutor, (err, tutor) => {
-      if (err || !tutor) return res.redirect("/login");
+      if (err || !tutor) return res.redirect("/tutor/login");
       else if (tutor) next();
     })
   } else {
-    return res.redirect("/login");
+    return res.redirect("/tutor/login");
   }
 }
 
