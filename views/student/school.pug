@@ -20,3 +20,23 @@ block content
           .main-school-display-text-content 
             span(style="font-size: 28px; font-weight: 600;") #{school.name}
             span(style="font-size: 14px; font-weight: 200;") #{school.corporate_email.split("@")[1]} | #{school.address}
+      .school-external-links-wrapper-main-wrapper
+        .school-external-links-wrapper-title Statistics
+        .school-graphing-wrapper-main-content 
+          .school-graphing-y-axis-labels
+            span Student 
+            span Tutor 
+            span Session
+          .school-graphing-y-axis
+          .school-graphing-data
+            - let maxNumber = Math.max(studentCount, tutorCount, sessionCount)
+            .school-graphing-data-each-data(style=`width: ${(studentCount / maxNumber) * 100}%; background-color: orange;`)
+            .school-graphing-data-each-data(style=`width: ${(tutorCount / maxNumber) * 100}%; background-color: purple;`)
+            .school-graphing-data-each-data(style=`width: ${(sessionCount / maxNumber) * 100}%; background-color: blue;`)
+        .school-graph-annotation-wrapper ⓘ There is 1 tutor per #{Math.round(tutorCount / studentCount)} student. This number is #{(tutorCount / studentCount) >= 3 ? "little high" : "normal"} for a mentoring system.
+      .school-external-links-wrapper-main-wrapper
+        .school-external-links-wrapper-title Useful links
+        .school-external-links-wrapper 
+          each externalLink in school.external_links 
+            a(href=externalLink[1] target="_blank").each-external-link-content #{externalLink[0]}
+          

@@ -10,9 +10,9 @@ window.onload = () => {
     serverRequest(window.location.href.replace("/tutor/profile", "/tutor/edit/link"), "POST", {
       link: zoomLinkInput.value
     }, (response) => {
-      if (response.success) return alert("Link successfully updated");
-      return alert("Link update error. Please try again.");
-    })
+      if (response.success) popUp("success", "Meeting link updated!", "Your new Zoom link is successfully updated and saved.");
+      else popUp("error", "Couldn't update Zoom link!", "There is an issue on our side. Thank you for your understanding.")
+})
   })
 
   const profileImageContent = document.getElementById("profile-image-content");
@@ -43,7 +43,8 @@ window.onload = () => {
             const formData = new FormData();
             formData.append("file", file)
             serverRequest(window.location.href.replace("/tutor/profile", "/tutor/edit/photo"), "FORM", formData, (response) => {
-    
+              if (response.success) popUp("success", "Photo successfully updated!", "Your new photo is successfully uploaded and saved.");
+              else popUp("error", "Couldn't upload photo!", "There is an issue on our side. Thank you for your understanding.")
             })
         };
         reader.readAsDataURL(file);
@@ -61,9 +62,9 @@ window.onload = () => {
     serverRequest(window.location.href.replace("/tutor/profile", "/tutor/edit/program"), "POST", {
       program: program
     }, (response) => {
-      if (response.success) return alert("Program successfully updated!");
-      return alert("Program update error occured. Please try again.");
-    })
+      if (response.success) popUp("success", "Program successfully updated!", "Your new program is successfully updated and saved.");
+      else popUp("error", "Couldn't update program!", "There is an issue on our side. Thank you for your understanding.")
+})
 
   })
 
@@ -72,8 +73,8 @@ window.onload = () => {
     serverRequest(window.location.href.replace("/tutor/profile", "/tutor/edit/bio"), "POST", {
       about: bioEditContent.value
     }, (response) => {
-      if (response.success) return alert("Bio successfully updated!");
-      return alert("Bio update error occured. Please try again.");
+      if (response.success) popUp("success", "Biography successfully updated!", "Your new biography is successfully updated and saved.");
+      else popUp("error", "Couldn't update biography!", "There is an issue on our side. Thank you for your understanding.")
     })
   })
 
@@ -87,11 +88,8 @@ window.onload = () => {
         serverRequest((window.location.href.replace("/tutor/profile", "/tutor/edit/subjects")), "POST", {
           subject: event.target.nextSibling.innerHTML
         }, (response) => {
-          if (response.success) {
-            alert("Subject successfully added to your proficiency list.");
-          } else {
-            alert("Subject couldn't added. Please try again");
-          }
+          if (response.success) popUp("success", "Subject added!", "Subject successfully added to your proficiency list.");
+          else popUp("error", "Couldn't add subject!", "There is an issue on our side. Thank you for your understanding.")
         })
       }
     }

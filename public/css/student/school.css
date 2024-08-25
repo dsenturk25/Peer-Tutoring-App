@@ -1,9 +1,9 @@
 
 .inner-main-wrapper {
   width: 110%;
-  height: calc(100vh - 200px);
-  display: flex;
-  flex-direction: column;
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .main-school-display-head-wrapper {
@@ -49,4 +49,79 @@
 .main-school-display-text-content {
   display: flex;
   flex-direction: column;
+}
+
+.school-external-links-wrapper-main-wrapper {
+  width: 90%;
+  margin: 5%;
+}
+
+.school-external-links-wrapper {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.each-external-link-content {
+  width: 40%;
+  margin-right: 5%;
+  background-color: #f8f8f8;
+  padding: 20px;
+  font-size: 14px;
+  font-weight: 300;
+  border-bottom: 1px solid #464646;
+}
+
+.school-external-links-wrapper-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.school-graphing-wrapper-main-content {
+  width: 90%;
+  padding: 2%;
+  height: 200px;
+  background-color: #f8f8f8;
+  display: flex;
+}
+
+.school-graphing-y-axis-labels {
+  display: flex;
+  height: 100%;
+  justify-content: space-around;
+  flex-direction: column;
+  font-size: 12px;
+}
+
+.school-graphing-y-axis {
+  width: 1px;
+  height: 100%;
+  margin-left: 10px;
+  background-color: #464646;
+}
+
+.school-graphing-data-each-data {
+  height: 30px;
+  opacity: 0.4;
+  width: 10px;
+  transition: all 0.2s ease-in-out 0.01s
+}
+
+.school-graphing-data-each-data:hover {
+  opacity: 0.6;
+}
+
+.school-graphing-data {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.school-graph-annotation-wrapper {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 300;
 }

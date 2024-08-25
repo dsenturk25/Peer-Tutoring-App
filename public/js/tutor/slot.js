@@ -15,8 +15,11 @@ window.onload = () => {
       finishTime: finishTime.value,
       isAvailable: true
     }, (response) => {
-      if (response.success) return window.location.reload();
-      else return alert("Couldn't open the slot, please try again.");
+      if (response.success) popUp("success", "New slot added!", "An available time slot added to your schedule.");
+      else popUp("error", "Couldn't add new slot time!", "There is an issue on our side. Thank you for your understanding.")
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
     })
   })
 }

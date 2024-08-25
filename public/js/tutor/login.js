@@ -13,9 +13,12 @@ window.onload = () => {
       password: password.value
     }, (response) => {
       if (response.success) {
-        window.location.href = "/tutor";
+        popUp("success", "Successfully logged in!", "You will proceed to tutor platform in a second.");
+        setTimeout(() => {
+          window.location.href = "/tutor"
+        }, 500);
       } else {
-        alert("The email or password you provided is incorrect. Please try again.");
+        popUp("error", "Your email or password is incorrect", "Please check your credentials and try again.");
       }
     })
   })
