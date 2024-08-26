@@ -33,6 +33,7 @@ block content
                 span as the meeting app 🖥️
               .slot-times-wrapper
                 each eachTime in eachDay
-                  .each-slot-times-content #{eachTime.startTime} - #{eachTime.finishTime}
+                  .each-slot-times-content(class=`${!eachTime.isAvailable ? "each-slot-times-content-not-available" : ""}`) #{eachTime.startTime} - #{eachTime.finishTime}
+                  div(style="display:none;") #{eachTime._id}
         else
           .no-available-days-warning No active available slots available

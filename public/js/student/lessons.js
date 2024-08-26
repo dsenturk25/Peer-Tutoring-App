@@ -38,6 +38,26 @@ window.onload = () => {
       } else {
         popUp("error", "Please enter all required fields.", "In order to give a proper feedback for improvement, please fill all required fields.")
       }
+    } else if (event.target.classList.contains("each-session-actions-cancel-lesson")) {
+      const sessionId = event.target.nextSibling.innerHTML;
+
+      popUp("question", "Cancel lesson?", "You're about the cancel this lesson. Please declare a reasoning for your action so your tutor can be aware.")
+        .then(cancelMessage => {
+
+          const url = window.location.href.replace("/student/lessons", "/session/edit/cancel/student");
+          serverRequest(url, "POST", {
+            sessionId: sessionId,
+            cancelMessage: cancelMessage,
+            canceledBy: "student"
+          }, (response) => {
+            if (response.success) popUp("success", "Lesson canceled!", "The lesson is successfully canceled. We will let your tutor know.");
+            else popUp("error", "Couldn't cancel lesson.", "Currently, we are having an issue. Thank you for your understanding.");
+            setTimeout(() => {
+              window.location.reload();
+            }, 500)
+          })
+        })
+      // edit/cancel/student
     }
   })
 

@@ -27,9 +27,9 @@ module.exports = (req, res) => {
 
           const tutor = req.session.tutor;
 
-          return res.render("student/index", {
-            page: "student/index",
-            title: "Student Welcome",
+          return res.render("tutor/school", {
+            page: "tutor/school",
+            title: "Tutor School Details",
             includes: {
               external: {
                 css: ["page", "general"],

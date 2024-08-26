@@ -15,6 +15,7 @@ const profileGetController = require("../../controllers/Tutor/Index/profileGet.j
 const openSlotGetController = require("../../controllers/Tutor/Index/openSlotGet.js")
 const openSlotPostController = require("../../controllers/Tutor/Index/openSlotPost.js")
 const schoolPostController = require("../../controllers/Tutor/Index/schoolGet.js");
+const deleteSlotPostController = require("../../controllers/Tutor/Index/deleteSlotPost.js");
 
 const editBioPostController = require("../../controllers/Tutor/edit/editBioPost.js");
 const editPhotoPostController = require("../../controllers/Tutor/edit/editPhotoPost.js");
@@ -78,6 +79,12 @@ router.post(
   "/slot/open",
   isTutorLoggedIn,
   openSlotPostController
+)
+
+router.post(
+  "/slot/delete",
+  isTutorLoggedIn,
+  deleteSlotPostController
 )
 
 router.post(

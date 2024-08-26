@@ -8,11 +8,8 @@ module.exports = (req, res) => {
     if (!tutor.subjects.includes(req.body.subject)) {
       tutor.subjects.push(req.body.subject);
     } else {
-      const newSubjectsArray = tutor.subjects.filter(eachSubject => {
-        return eachSubject != req.body.subject;
-      })
-
-      tutor.subjects = newSubjectsArray;
+      const indexOfToBeRemovedSubject = tutor.subjects.indexOf(req.body.subject);
+      tutor.subjects.splice(indexOfToBeRemovedSubject, 1);
     }
 
     tutor.save();

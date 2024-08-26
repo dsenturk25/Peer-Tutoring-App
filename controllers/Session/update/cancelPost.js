@@ -1,5 +1,7 @@
 
 const Session = require("../../../models/Session/session");
+const Tutor = require("../../../models/Tutor/tutor");
+const async = require("async");
 
 module.exports = (req, res) => {
 
@@ -10,6 +12,23 @@ module.exports = (req, res) => {
     canceledAt: Date.now()
   }, (err, session) => {
     if (err) return res.status(400).send({ success: false, err: "session cancel error" });
-    return res.send({ success: true, session: session });
+
+    Tutor.findById(session.tutorId, (err, tutor) => {
+      if (err) return res.status(400).send({ success: false, err: "session cancel error" });
+
+      async.timesSeries(tutor.availableTimes.length, (i, next) => {
+        const eachAvailableTime = tutor.availableTimes[i];
+
+        if (eachAvailableTime && (eachAvailableTime._id == session.availableTimeId) && !eachAvailableTime.isAvailable) {
+          eachAvailableTime.isAvailable = true;
+        }
+        next();
+      }, (err) => {
+        if (err) return res.status(400).send({ success: false, err: "session cancel error" });
+
+        tutor.save();
+        return res.send({ success: true, tutor: tutor });
+      })
+    })
   })
 }

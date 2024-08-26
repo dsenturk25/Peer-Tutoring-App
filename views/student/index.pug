@@ -20,7 +20,7 @@ block content
                 .each-tutor-image 
                   img(src=(tutor.profile_photo ? tutor.profile_photo : "/res/images/profile.png"), alt="Tutor image")
                 .each-tutor-core-info-text
-                  .each-tutor-core-info-text-title #{tutor.name} #{tutor.surname}
+                  a(href=`/student/tutor/personal?filter=${tutor.name}-${tutor.surname}`).each-tutor-core-info-text-title #{tutor.name} #{tutor.surname}
                   .each-tutor-core-info-text-description from #{school.name}
               .each-tutor-each-sub-wrapper 
                 .each-tutor-each-sub-wrapper-title Academic program detaıls

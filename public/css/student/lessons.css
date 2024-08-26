@@ -62,7 +62,13 @@
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
+  transition: all 0.2s ease-in-out 0.01s;
 }
+
+.each-session-content-tutor-core-info:hover {
+  text-decoration: underline;
+}
+
 .each-session-content-time-info {
   margin-bottom: 5px;
 }
@@ -79,6 +85,7 @@
   padding: 5px;
   font-size: 10px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .each-session-content-actions {

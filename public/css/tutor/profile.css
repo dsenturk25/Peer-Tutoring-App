@@ -1,3 +1,17 @@
+
+textarea {
+  padding: 10px;
+  border: 8px solid #f8f8f8;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #464646;
+}
+
+select {
+  padding: 10px;
+  background: #f8f8f8;
+  border: 0;
+}
+
 .inner-main-wrapper {
   width: 100%;
   padding: 5%;

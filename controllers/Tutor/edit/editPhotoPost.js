@@ -8,7 +8,7 @@ module.exports = (req, res) => {
   // upload to aws
   const filename = req.file.filename;
   const filemimetype = req.file.mimetype;
-  const destination = "../../../uploads/" + filename;
+  const destination = "./uploads/" + filename;
   
   const imageSrc = fs.readFileSync(req.file.destination + req.file.filename);
 

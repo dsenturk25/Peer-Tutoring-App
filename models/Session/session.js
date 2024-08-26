@@ -62,6 +62,10 @@ const sessionSchema = mongoose.Schema({
 
   canceledAt: {
     type: Date
+  },
+
+  availableTimeId: {
+    type: String
   }
 })
 

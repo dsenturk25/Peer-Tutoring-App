@@ -18,16 +18,17 @@ block content
           each session in sessions
             if session.stage == "ongoing"
               - validCountOngoing++
-              .each-session-content
+              .each-session-content(id=session._id)
                 .each-session-content-infos
                   .each-session-content-date-info #{(new Date(session.date)).toDateString()}
                   .each-session-content-tutor-info
                     each tutor in tutors 
                       if `${tutor._id}` == `${session.tutorId}`
-                        .each-session-content-tutor-core-info #{tutor.name} #{tutor.surname}
+                        a(href=`/student/tutor/personal?filter=${tutor.name}-${tutor.surname}`).each-session-content-tutor-core-info #{tutor.name} #{tutor.surname}
                         .each-session-content-time-info #{session.startTime}-#{session.finishTime}
                         a(href=tutor.link).each-session-content-zoom-link-info Click to join Zoom
                         .each-session-actions-cancel-lesson Cancel lesson
+                        div(style="display:none;") #{session._id}
                 .each-session-content-actions
                   .rate-tutor-title-preview-content 
                     .each-session-content-time-info(style="font-size:14px") Rate this meeting
@@ -44,16 +45,15 @@ block content
           each session in sessions
             if session.stage == "completed"
               - validCountCompleted++
-              .each-session-content
+              .each-session-content(id=session._id)
                 .each-session-content-infos
                   .each-session-content-date-info #{(new Date(session.date)).toDateString()}
                   .each-session-content-tutor-info
                     each tutor in tutors 
                       if `${tutor._id}` == `${session.tutorId}`
-                        .each-session-content-tutor-core-info #{tutor.name} #{tutor.surname}
+                        a(href=`/student/tutor/personal?filter=${tutor.name}-${tutor.surname}`).each-session-content-tutor-core-info #{tutor.name} #{tutor.surname}
                         .each-session-content-time-info #{session.startTime}-#{session.finishTime}
                         .each-session-content-zoom-link-info(style="color: lightgreen") Lesson completed
-                        .each-session-actions-cancel-lesson Cancel lesson
                 .each-session-content-actions
                   .rate-tutor-title-preview-content 
                     .each-session-content-time-info(style="font-size:14px") Rate and give feedback
@@ -74,13 +74,13 @@ block content
           each session in sessions
             if session.stage == "canceled"
               - validCountCanceled++
-              .each-session-content
+              .each-session-content(id=session._id)
                 .each-session-content-infos
                   .each-session-content-date-info #{(new Date(session.date)).toDateString()}
                   .each-session-content-tutor-info
                     each tutor in tutors 
                       if `${tutor._id}` == `${session.tutorId}`
-                        .each-session-content-tutor-core-info #{tutor.name} #{tutor.surname}
+                        a(href=`/student/tutor/personal?filter=${tutor.name}-${tutor.surname}`).each-session-content-tutor-core-info #{tutor.name} #{tutor.surname}
                         .each-session-content-time-info #{session.startTime}-#{session.finishTime}
                         .each-session-content-time-info(style="font-size: 12px; max-width:100px;") Session canceled on #{(new Date(session.canceledAt)).toDateString()}
                 .each-session-content-actions
@@ -94,7 +94,7 @@ block content
                       else 
                         span(style="font-size: 14px") #{student.name} #{student.surname}
                   .canceled-session-cancel-text-wrapper #{session.cancelMessage}
-            if validCountCanceled == 0
-              .each-session-content-time-info(style="font-size:14px") We will list your canceled lessons here.
-              .each-session-content-time-info(style="font-size:14px") There seems to be no canceled lesson.
+          if validCountCanceled == 0
+            .each-session-content-time-info(style="font-size:14px") We will list your canceled lessons here.
+            .each-session-content-time-info(style="font-size:14px") There seems to be no canceled lesson.
           

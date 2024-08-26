@@ -1,0 +1,238 @@
+
+.inner-main-wrapper {
+  width: 100%;
+  padding: 5%;
+  background-color: #ededed;
+  height: calc(100vh - 200px);
+  overflow-y: scroll;
+  display: flex;
+}
+
+.tutor-main-wrapper {
+  margin-right: 40px;
+}
+
+.tutor-main-wrapper-title {
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.tutor-main-wrapper-main-content-wrapper {
+  width: 360px;
+  padding: 20px;
+  height: fit-content;
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+
+.tutor-main-core-name-surname-wrapper {
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.tutor-main-core-info-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.tutor-main-core-email-wrapper {
+  font-size: 11px;
+  padding: 5px;
+  border-radius: 20px;
+  border: 1px solid #6687ff;
+  color: #6687ff;
+}
+
+.tutor-main-core-text-info-wrapper {
+  margin-left: 20px;
+  margin-right: auto;
+}
+
+.tutor-main-image-wrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.tutor-main-image-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+
+.tutor-main-core-rating-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.tutor-main-core-rating-wrapper span {
+  font-size: 10px;
+  font-weight: 200;
+}
+
+.tutor-each-feature-content-subjects-main-content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tutor-each-feature-content {
+  margin-bottom: 20px;
+}
+
+.tutor-each-feature-content-title {
+  font-size: 12px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: #686868;
+}
+
+.each-subject-content {
+  font-size: 12px;
+  padding: 5px;
+  background-color: #f8f8f8;
+  border: 1px solid #ededed;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.each-tutor-student-lesson-info-content {
+  display: flex;
+  align-items: center;
+}
+
+.tutor-student-lesson-info-content-main-date {
+  padding: 10px;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 50px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 25px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.each-tutor-student-lesson-content {
+  margin: 20px 0;
+  border-bottom: 1px solid #ededed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.tutor-student-lesson-zoom-link-info {
+  color: #6687ff;
+}
+
+.tutor-student-lesson-day-time-info {
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #686868;
+}
+
+
+.create-lesson-absolute-wrapper {
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  left: calc(50% - 250px);
+  top: calc(50% - 150px);
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 30px 30px 30px 3000px #00000036;
+  border-radius: 20px;
+  display: flex;
+}
+
+.create-lesson-each-column-title {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.create-lesson-each-column-content-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.each-available-day-content {
+  width: calc(90% - 20px);
+  border: 2px solid #6687ff;
+  color: #6687ff;
+  background-color: rgba(102, 135, 255, 0.05);
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.create-lesson-day-options-wrapper {
+  width: 50%;
+  margin-right: 20px;
+  height: 100%;
+  border-right: 1px solid #ededed;
+}
+
+.create-lesson-absolute-day-time-slot-please-select-text {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.tutor-display-times-display-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.create-lesson-each-day-time-slots-wrapper {
+  height: 100%;
+  padding: 10px 0;
+  width: 50%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.create-lesson-tutor-name-surname {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.create-lesson-tutor-zoom-link {
+  font-weight: 400;
+  color: #6687ff;
+}
+.create-lesson-tutor-session-date {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.create-lesson-tutor-session-time {
+  width: calc(100% - 24px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #6687ff;
+  color: #6687ff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.create-lesson-tutor-session-time:hover {
+  background-color: rgba(102, 135, 255, 0.05);
+}

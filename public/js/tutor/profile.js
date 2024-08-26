@@ -84,14 +84,13 @@ window.onload = () => {
         event.target.classList.remove("checkbox-checkbox-checked");
       } else {
         event.target.classList.add("checkbox-checkbox-checked");
-
-        serverRequest((window.location.href.replace("/tutor/profile", "/tutor/edit/subjects")), "POST", {
-          subject: event.target.nextSibling.innerHTML
-        }, (response) => {
-          if (response.success) popUp("success", "Subject added!", "Subject successfully added to your proficiency list.");
-          else popUp("error", "Couldn't add subject!", "There is an issue on our side. Thank you for your understanding.")
-        })
       }
+      serverRequest((window.location.href.replace("/tutor/profile", "/tutor/edit/subjects")), "POST", {
+        subject: event.target.nextSibling.innerHTML
+      }, (response) => {
+        if (response.success) popUp("success", "Subject added!", "Subject successfully added to your proficiency list.");
+        else popUp("error", "Couldn't add subject!", "There is an issue on our side. Thank you for your understanding.")
+      })
     }
   })
 }

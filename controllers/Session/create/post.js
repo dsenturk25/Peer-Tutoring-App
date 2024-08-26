@@ -4,13 +4,14 @@ const Tutor = require("../../../models/Tutor/tutor");
 const Student = require("../../../models/Student/student");
 
 module.exports = (req, res) => {
+
   const body = {
-    schoolId: req.session.student.schooId,
     tutorId: req.body.tutorId,
     studentId: req.session.student._id,
     date: req.body.date,
     startTime: req.body.startTime,
-    finishTime: req.body.finishTime
+    finishTime: req.body.finishTime,
+    availableTimeId: req.body.availableTimeId
   }
 
   Session.createSession(body, (err, session) => {

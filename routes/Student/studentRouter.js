@@ -10,6 +10,7 @@ const indexGetController = require("../../controllers/Student/Index/indexGet.js"
 const loginGetController = require("../../controllers/Student/Index/loginGet.js");
 const lessonsGetController = require("../../controllers/Student/Index/lessonsGet.js");
 const schoolGetController = require("../../controllers/Student/Index/schoolGet.js");
+const tutorGetController = require("../../controllers/Student/Index/tutorGet.js")
 
 
 router.get(
@@ -28,6 +29,12 @@ router.get(
   "/school",
   isStudentLoggedIn,
   schoolGetController
+)
+
+router.get(
+  "/tutor/personal",
+  isStudentLoggedIn,
+  tutorGetController
 )
 
 router.get(
