@@ -1,0 +1,14 @@
+extends ./partials/header.pug
+block content 
+  .all-main-wrapper
+    .header-top-wrapper
+      .header-top-title Calendar
+      .header-top-content 
+        a(href="/student").header-top-open-slot-button Find tutors
+        .header-top-open-slot-rating-content(style="background-color:white;color:#464646;") 
+          .header-top-content-student-core-info #{student.name} #{student.surname}
+          span(style="font-size:10px;") Student
+        .student-account-placeholder-photo
+          img(src="/res/images/student.svg", alt="student placeholder photo")
+    .inner-main-wrapper 
+      #calendar.calendar

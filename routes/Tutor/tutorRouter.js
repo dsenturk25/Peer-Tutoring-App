@@ -23,6 +23,7 @@ const editSubjectsPostController = require("../../controllers/Tutor/edit/editSub
 const editProgramPostController = require("../../controllers/Tutor/edit/editProgramPost.js");
 const editLinkPostController = require("../../controllers/Tutor/edit/editLinkPost.js");
 const lessonsGetController = require("../../controllers/Tutor/Index/mySessionsGet.js");
+const availableTimesGet = require("../../controllers/Tutor/Index/availableTimesGet.js");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -85,6 +86,12 @@ router.post(
   "/slot/delete",
   isTutorLoggedIn,
   deleteSlotPostController
+)
+
+router.post(
+  "/available-times/get",
+  isTutorLoggedIn,
+  availableTimesGet
 )
 
 router.post(

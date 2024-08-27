@@ -6,3 +6,5 @@ block content
       .header-top-content 
         a(href="/tutor/slot").header-top-open-slot-button Open slot +
         .header-top-open-slot-rating-content(style=`background-color:${tutor.rating <= 1 ? "red" : tutor.rating <= 2.5 ? "orange" : tutor.rating <= 4 ? "yellow" : tutor.rating <= 5 ? "green" : "gray"}`) #{tutor.rating ? tutor.rating : 0}
+    .inner-main-wrapper 
+      #calendar.calendar

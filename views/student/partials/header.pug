@@ -6,6 +6,7 @@ html(lang='tr')
     link(rel="stylesheet", href="https://unpkg.com/leaflet/dist/leaflet.css")
     script(src="https://unpkg.com/leaflet/dist/leaflet.js")
     link(href='https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900' rel='stylesheet')
+    script(src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js')
     if includes && includes.external
       if includes.external.css
         if includes.external.css.includes('page')
@@ -28,11 +29,11 @@ html(lang='tr')
         .each-title-content Tutorise Dashboard
         .each-title-content-type Student
       .navbar-menu-wrapper 
-        a(href="/student/school").each-menu-content 🏫 School
-        a(href="/student").each-menu-content 🧑‍🏫 Find Tutors
-        a(href="/student/lessons").each-menu-content 🎒 Lessons
-        a(href="/student/calendar").each-menu-content 📅 Calendar
-        #logout.each-menu-content 🚪 Log out
+        a(href="/student/school").each-menu-content 🏫 &nbsp&nbsp&nbsp&nbsp School
+        a(href="/student").each-menu-content 🧑‍🏫 &nbsp&nbsp&nbsp&nbsp Find Tutors
+        a(href="/student/lessons").each-menu-content 🎒 &nbsp&nbsp&nbsp&nbsp Lessons
+        a(href="/student/calendar").each-menu-content 📅 &nbsp&nbsp&nbsp&nbsp Calendar
+        #logout.each-menu-content 🚪 &nbsp&nbsp&nbsp&nbsp Log out
       .navbar-footer-content 
         span Tutorise © 2024
         span Powered by Ledgerise Teknoloji

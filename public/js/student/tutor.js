@@ -3,6 +3,28 @@ window.onload = () => {
 
   logoutButton();
 
+
+  const createLessonAbsoluteWrapper = document.getElementById("create-lesson-absolute-wrapper");
+  const createMeetingSubmitButton = document.getElementById("create-meeting-submit-button");
+
+  createMeetingSubmitButton.addEventListener("click", (event) => {
+
+    createLessonAbsoluteWrapper.style.display = "flex";
+    setTimeout(() => {
+      createLessonAbsoluteWrapper.style.filter = "opacity(1)";
+    }, 10)
+  })
+
+  const cancelCreateMeetingButton = document.getElementById("cancel-create-meeting-submit-button");
+  cancelCreateMeetingButton.addEventListener("click", (event) => {
+
+    createLessonAbsoluteWrapper.style.filter = "opacity(0)";
+    setTimeout(() => {
+      createLessonAbsoluteWrapper.style.display = "none";
+    }, 250)
+  })
+
+
   const createLessonTimeDisplayContent = document.getElementById("create-lesson-time-display-content");
   
   document.addEventListener("click", (event) => {
@@ -68,6 +90,9 @@ window.onload = () => {
                   }, (response) => {
                     if (response.success) popUp("success", "Lesson successfully created!", "Lesson is created. You can go to lesson page to view details.");
                     else popUp("error", "Couldn't create lesson!", "Currently, we are facing an issue. Thank you for your understanding.");
+                    setTimeout(() => {
+                      window.location.reload();
+                    }, 500);
                   })
                 }
               })

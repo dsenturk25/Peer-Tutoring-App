@@ -1,6 +1,16 @@
 extends ./partials/header.pug
 block content 
+  - let subjects = ["mathematics", "physics", "turkish", "english", "computer science", "economy", "business management", "visual arts", "social sciences"]
   .all-main-wrapper
+    .filter-subjects-select-absolute-wrapper#filter-subjects-select-absolute-wrapper
+      .filter-subjects-select-absolute-wrapper-title Apply a subjects filter!
+      .filter-subjects-select-absolute-wrapper-description Select subjects that you wanna take lesson about. This will list tutors that have a skill in that subject.
+      .filter-subjects-select-absolute-wrapper-subjects-wrapper
+        each subject in subjects 
+          .filter-subjects-select-absolute-each-subject-content 
+            input(type="checkbox" id=`filter-subjects-select-${subject}`).filter-subjects-select-absolute-each-subject-content-checkbox
+            .filter-subjects-select-absolute-each-subject-content-name #{subject}
+      .filter-subjects-select-absolute-wrapper-go-back-button#filter-subjects-absolute-go-back-button(class="submit-button" style="width:calc(100% - 40px); text-align: center; font-size: 12px;") Go back
     .header-top-wrapper
       .header-top-title Overview
       .header-top-content 
@@ -11,8 +21,30 @@ block content
         .student-account-placeholder-photo
           img(src="/res/images/student.svg", alt="student placeholder photo")
     .inner-main-wrapper 
-      .tutor-filters-wrapper 
-      .tutor-content-wrapper 
+      .tutor-filters-wrapper
+        select.each-sub-filter#all-past-tutors-filter
+          option(value="all-mentors") All Tutors
+          option(value="past-mentors") My Past Tutors
+        select.each-sub-filter#program-filter
+          option(value="") All Programs
+          option(value="ib") IB
+          option(value="ap") AP
+          option(value="meb") MEB
+        select.each-sub-filter#level-filter
+          option(value="") All levels
+          option(value="9") 9
+          option(value="10") 10
+          option(value="11") 11
+          option(value="12") 12
+        .each-sub-filter#subject-filter + Select subjects
+        input.each-sub-filter#name-surname-filter(placeholder="Name")
+        select.each-sub-filter#sort-filter
+          option(value="") Sort by
+          option(value="rating-ascending-value") Rating low-to-high
+          option(value="rating-descending-value") Rating high-to-low
+          option(value="students-ascending-length") Experience low-to-high
+          option(value="students-descending-length") Experience high-to-low
+      .tutor-content-wrapper#tutor-content-wrapper
         each tutor in tutors 
           .each-tutor-content
             .each-tutor-left-infos-wrapper
@@ -22,6 +54,9 @@ block content
                 .each-tutor-core-info-text
                   a(href=`/student/tutor/personal?filter=${tutor.name}-${tutor.surname}`).each-tutor-core-info-text-title #{tutor.name} #{tutor.surname}
                   .each-tutor-core-info-text-description from #{school.name}
+                .each-tutor-core-rating-wrapper 
+                  div #{tutor.rating}
+                  span overall rating
               .each-tutor-each-sub-wrapper 
                 .each-tutor-each-sub-wrapper-title Academic program detaıls
                 .each-tutor-each-sub-wrapper-description #{tutor.program ? tutor.program : "MEB"} program at level #{tutor.level}

@@ -151,13 +151,36 @@
   background-color: #fff;
   box-shadow: 30px 30px 30px 3000px #00000036;
   border-radius: 20px;
-  display: flex;
+  display: none;
+  filter: opacity(0);
+  transition: all 0.25s ease 0s;
 }
 
 .create-lesson-each-column-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.create-lesson-each-column-title div {
   font-weight: 600;
   margin-bottom: 20px;
 }
+
+.create-lesson-each-column-title span {
+  margin-right: 10px;
+  font-size: 12px;
+  padding: 10px;
+  background-color: #4e0046;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
 .create-lesson-each-column-content-wrapper {
   width: 100%;
   display: flex;
