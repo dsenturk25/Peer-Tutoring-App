@@ -20,3 +20,11 @@ block content
       .start-buttons 
         a(href="/student").each-start-button Take Lessons
         a(href="/tutor").each-start-button Start Teaching
+      .clients-display-content 
+        .clients-display-title Trusted by
+        .clients-all-clients-wrapper
+          each school in schoolsDisplayObjects
+            .each-school-wrapper 
+              .each-school-image-wrapper 
+                img(src=school.schoolImage, alt=school.schoolName)
+              .each-school-name-content #{school.schoolName}
