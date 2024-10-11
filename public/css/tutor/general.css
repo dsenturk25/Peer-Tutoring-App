@@ -124,8 +124,9 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #00a94c;
-  color: #efe;
+  color: #000;
   border-radius: 5px;
+  font-weight: 500;
 }
 
 .each-checkbox-wrapper {

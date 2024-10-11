@@ -34,7 +34,7 @@ const quickSort = (tutors, field, isAscending, compareArrayLength) => {
     }
   }
 
-  return [...quickSort(leftArray), ...quickSort(rightArray)];
+  return [...quickSort(leftArray, field, isAscending, compareArrayLength), ...quickSort(rightArray, field, isAscending, compareArrayLength)];
 }
 
 

@@ -112,11 +112,9 @@ studentSchema.statics.loginStudent = function (body, callback) {
 studentSchema.statics.findStudentById = function (body, callback) {
 
   Student.findById(mongoose.Types.ObjectId(body._id), (err, student) => {
-    ;
     if (err || !student) return callback("user_not_found");
     callback(null, student);
   })
-
 }
 
 studentSchema.statics.sendApplication = function (body, callback) {

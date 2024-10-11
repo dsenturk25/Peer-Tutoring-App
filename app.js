@@ -15,13 +15,14 @@ const server = http.createServer(app);
 const io = require("socket.io")(server);
 const PORT = process.env.PORT || 3000;
 
-const mongoUri = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/peer-tutoring-app";
+const mongoUri = "mongodb://127.0.0.1:27017/peer-tutoring-app";
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
 //yorum
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 

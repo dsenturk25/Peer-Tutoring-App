@@ -194,11 +194,12 @@ label {
   transition: all 0.1s ease;
   border-radius: 10px;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .each-slot-times-content:hover {
   border: 3px solid #6687ff;
-  padding: 9px;
+  padding: 8px;
 }
 
 .timezone-utc-content-content {

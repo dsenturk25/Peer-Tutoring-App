@@ -9,6 +9,8 @@ label {
   display: flex;
   overflow-x: hidden;
   background-color: #eee;
+  overflow-y: scroll;
+  height: 100%;
 }
 
 
@@ -33,6 +35,8 @@ label {
   padding: 20px;
   border-radius: 5px;
   margin-left: 20px;
+  max-height: 70%;
+  overflow-y: scroll;
 }
 
 .add-new-slot-wrapper {

@@ -35,7 +35,6 @@ block content
                     .each-session-content-session-feedback-container #{session.studentReflection ? session.studentReflection : "Student's feedback note will be available once given."}
             if validCountOngoing == 0
               .each-session-content-time-info(style="font-size:14px") We will list your ongoing lessons here.
-              .each-session-content-time-info(style="font-size:14px") There seems to be no ongoing lesson.
       .each-session-group-wrapper
         .each-session-group-title Completed lessons
         .each-session-group-wrapper-sessions-wrapper
@@ -62,7 +61,6 @@ block content
                     .each-session-content-session-feedback-container #{session.studentReflection ? session.studentReflection : "Student's feedback note will be available once given."}
           if validCountCompleted == 0
             .each-session-content-time-info(style="font-size:14px") We will list your completed lessons here.
-            .each-session-content-time-info(style="font-size:14px") There seems to be no completed lesson.
       .each-session-group-wrapper
         .each-session-group-title Canceled lessons
         .each-session-group-wrapper-sessions-wrapper
@@ -88,5 +86,4 @@ block content
                   textarea(cols="30", rows="5" disabled).each-session-actions-write-reflection
             if validCountCanceled == 0
               .each-session-content-time-info(style="font-size:14px") We will list your canceled lessons here.
-              .each-session-content-time-info(style="font-size:14px") There seems to be no canceled lesson.
           

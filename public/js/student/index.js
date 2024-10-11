@@ -251,7 +251,7 @@ window.onload = () => {
               availableTimeId: event.target.nextSibling.nextSibling.innerHTML
             }, (response) => {
               if (response.success) popUp("success", "You're all set.", "Your lesson is arranged. Please go to lessons page to move on.");
-              popUp("error", "Something went wrong.", "Your lesson can't be arranged. Please try again later.");
+              else popUp("error", "Something went wrong.", "Your lesson can't be arranged. Please try again later.");
               window.location.reload();
             })
           }
