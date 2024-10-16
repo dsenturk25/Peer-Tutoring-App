@@ -107,7 +107,12 @@ const tutorSchema = mongoose.Schema({
         type: Boolean
       }
     }
-  ]
+  ],
+
+  isPasswordChanged: {
+    type: Boolean,
+    default: false
+  }
 })
 
 

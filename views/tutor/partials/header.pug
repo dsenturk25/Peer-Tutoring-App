@@ -22,16 +22,26 @@ html(lang='tr')
           script(src=`/js/functions/httpRequest.js`)
           script(src=`/js/functions/logout.js`) 
           script(src=`/js/functions/popUp.js`) 
+          script(src=`/js/functions/changePassword.js`) 
         script(src="https://kit.fontawesome.com/e47420f551.js" crossorigin="anonymous")
   body
     .tutor-navbar
+      if !tutor.isPasswordChanged
+        .change-password-popup-wrapper
+          .change-password-welcome-wrapper 
+            .welcome-wrapper-title Dear #{tutor.name} #{tutor.surname}, it is a great pleasure for us to have you as a mentor.
+            .welcome-wrapper-description Please change your password to use Tutorise more securely.
+            .welcome-wrapper-inputs-wrapper
+              input.each-welcome-password-input#new-password-input(type="text" placeholder="New password") 
+              input.each-welcome-password-input#new-password-again-input(type="text" placeholder="New password again") 
+            .welcome-wrapper-change-password-button#welcome-wrapper-change-password-button Change password
       .main-title-content
         .each-title-content Tutorise Dashboard
-        .each-title-content-type Tutor
+        .each-title-content-type Alumni
       .navbar-menu-wrapper 
         a(href="/tutor/school").each-menu-content 🏫 School
         a(href="/tutor").each-menu-content 📅 Overview
-        a(href="/tutor/lessons").each-menu-content 🧑‍🎓 Lessons
+        a(href="/tutor/lessons").each-menu-content 🧑‍🎓 Sessions
         a(href="/tutor/slot").each-menu-content ⌚ Open Slot
         a(href="/tutor/profile").each-menu-content 🧑‍🏫 Profile
         #logout.each-menu-content 🚪 Log out

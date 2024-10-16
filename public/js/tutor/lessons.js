@@ -1,6 +1,8 @@
 
 window.onload = () => {
 
+  changePasswordListener();
+
   document.addEventListener("click", (event) => {
     
     if (event.target.classList.contains("each-session-change-status-submit-button")) {

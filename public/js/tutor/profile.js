@@ -1,6 +1,7 @@
 
 window.onload = () => {
   logoutButton();
+  changePasswordListener();
 
   const zoomLinkInput = document.getElementById("tutor-zoom-link");
   const saveZoomLinkButton = document.getElementById("submit-zoom-link");

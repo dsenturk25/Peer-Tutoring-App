@@ -71,6 +71,7 @@ const studentRouter = require("./routes/Student/studentRouter");
 const studentAuthRouter = require("./routes/Student/studentAuthRouter");
 const adminRouter = require("./routes/Admin/adminRouter");
 const sessionRouter = require("./routes/Session/sessionRouter");
+const Tutor = require("./models/Tutor/tutor");
 
 app.use("/", indexRouter);
 app.use("/tutor", tutorRouter);

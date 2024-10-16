@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
   logoutButton();
+  changePasswordListener();
 
   const url = window.location.href + "/available-times/get";
 

@@ -1,6 +1,8 @@
 
 window.onload = () => {
 
+  changePasswordListener();
+
   const dateInput = document.getElementById("date-input");
   const startTime = document.getElementById("start-time-input");
   const finishTime = document.getElementById("finish-time-input");
