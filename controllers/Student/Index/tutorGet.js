@@ -7,22 +7,18 @@ const { retrieveImageFromImageName } = require("../../../utils/uploadImageToAws"
 const async = require("async");
 
 module.exports = (req, res) => {
-  
+
   if (
-    req.query.filter 
-    && req.query.filter.includes("-") 
-    && req.query.filter.split("-")[0].length > 0 
-    && req.query.filter.split("-")[1].length > 0
+    req.query.id 
   ) {
 
-    const tutorName = req.query.filter.split("-")[0];
-    const tutorSurname = req.query.filter.split("-")[1];
-
-    Tutor.findOne({ name: tutorName, surname: tutorSurname }, async (err, tutor) => {
+    Tutor.findById(req.query.id, async (err, tutor) => {
       if (err || !tutor) return res.status(400).redirect("/student");
 
       delete tutor.password;
-      tutor.profile_photo = await retrieveImageFromImageName(tutor.profile_photo);
+      if (tutor.profile_photo) {
+        tutor.profile_photo = await retrieveImageFromImageName(tutor.profile_photo);
+      }
 
       Student.findById(req.session.student._id, (err, student) => {
         if (err || !tutor) return res.status(400).redirect("/student");
@@ -46,6 +42,7 @@ module.exports = (req, res) => {
               }
               next();
             }, (err) => {
+
               return res.render("student/tutor", {
                 page: "student/tutor",
                 title: "Student Tutor",

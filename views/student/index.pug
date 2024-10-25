@@ -52,7 +52,7 @@ block content
                 .each-tutor-image 
                   img(src=(tutor.profile_photo ? tutor.profile_photo : "/res/images/profile.png"), alt="Tutor image")
                 .each-tutor-core-info-text
-                  a(href=`/student/tutor/personal?filter=${tutor.name}-${tutor.surname}`).each-tutor-core-info-text-title #{tutor.name} #{tutor.surname}
+                  a(href=`/student/tutor/personal?id=${tutor._id}`).each-tutor-core-info-text-title #{tutor.name} #{tutor.surname}
                   .each-tutor-core-info-text-description from #{school.name}
                 .each-tutor-core-rating-wrapper 
                   div #{tutor.rating}

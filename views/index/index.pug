@@ -4,21 +4,23 @@ block content
   .all-main-wrapper
     .header-main-wrapper 
       a(href="/").each-header-item 
-        img.logo-image(src="/res/images/logo.png", alt="Tutorise Logo")
+        img.logo-image(src="/res/images/logo.png", alt="Mentorise Logo")
       a(href="/tutor").each-header-item Mentor page
       a(href="/student").each-header-item Student page
       a(href="/admin").each-header-item Admin page
       a(href="mailto:doguboran@ledgerise.org").each-header-item 
-        .join-button Join Tutorise
+        .join-button Join Mentorise!
     .inner-main-wrapper
       .main-description Mentoring Redefined
       .main-title 
-        span Connect With Your School's 
-        span(style="color: #f2345f") Notable Alumni 
-      .subsequent-description Tutorise is the first alumni-student connection social media for high school students in Turkey. With tutorise you can get insight and inquiry about the career or college degree you wanna pursue. We will help you find the best alumni from your school and connect with them with one click.
+        span The 
+        span(style="color: rgb(100,99,251)") Easiest 
+        span Way to Connect With Your School's 
+        span(style="color: rgb(100,99,251)") Notable Alumni 
+      .subsequent-description Mentorise is the first alumni-student connection social media for high school students in Turkey. With Mentorise you can get insight and inquiry about the career or college degree you wanna pursue. 
       .start-buttons 
         a(href="/student").each-start-button Take Lessons
-        a(href="/tutor").each-start-button Start Mentoring
+        a(href="/tutor" style="background-color:#6465f1; color:#fff; box-shadow: 0px 4px 5px #6465f1").each-start-button Start Mentoring
       .clients-display-content 
         .clients-display-title Trusted by
         .clients-all-clients-wrapper
@@ -27,3 +29,60 @@ block content
               .each-school-image-wrapper 
                 img(src=school.schoolImage, alt=school.schoolName)
               .each-school-name-content #{school.schoolName}
+    .main-team-wrapper 
+      .main-team-wrapper-title Meet Our Team!
+      .main-team-members-main-wrapper 
+        .each-team-member-content 
+          .each-team-member-image-wrapper
+            img.each-team-member-image-content(src="/res/images/dogu.png")
+          .each-team-member-textual-wrapper
+            .each-team-member-name Doğu Boran
+            .each-team-member-role Co Founder & Head of Product
+        .each-team-member-content 
+          .each-team-member-image-wrapper
+            img.each-team-member-image-content(src="/res/images/dolunay.png")
+          .each-team-member-textual-wrapper
+            .each-team-member-name Dolunay
+            .each-team-member-role Co Founder & Head of Marketing
+        .each-team-member-content 
+          .each-team-member-image-wrapper
+            img.each-team-member-image-content(src="/res/images/arhan.png")
+          .each-team-member-textual-wrapper
+            .each-team-member-name Arhan
+            .each-team-member-role Co Founder & Head of Portfolio
+        .each-team-member-content 
+          .each-team-member-image-wrapper
+            img.each-team-member-image-content(src="/res/images/defne.png")
+          .each-team-member-textual-wrapper
+            .each-team-member-name Defne
+            .each-team-member-role Brand Ambassador
+        .each-team-member-content 
+          .each-team-member-image-wrapper
+            img.each-team-member-image-content(src="/res/images/mina.png")
+          .each-team-member-textual-wrapper
+            .each-team-member-name Mina
+            .each-team-member-role Brand Ambassador
+        .each-team-member-content 
+          .each-team-member-image-wrapper
+            img.each-team-member-image-content(src="/res/images/deniz.png")
+          .each-team-member-textual-wrapper
+            .each-team-member-name Deniz
+            .each-team-member-role Brand Ambassador
+        .each-team-member-content 
+          .each-team-member-image-wrapper
+            img.each-team-member-image-content(src="/res/images/meyra.png")
+          .each-team-member-textual-wrapper
+            .each-team-member-name Meyra
+            .each-team-member-role Brand Ambassador
+        .each-team-member-content 
+          .each-team-member-image-wrapper
+            img.each-team-member-image-content(src="/res/images/azra.png")
+          .each-team-member-textual-wrapper
+            .each-team-member-name Azra
+            .each-team-member-role Brand Manager
+        .each-team-member-content 
+          .each-team-member-image-wrapper
+            img.each-team-member-image-content(src="/res/images/ezgi.png")
+          .each-team-member-textual-wrapper
+            .each-team-member-name Ezgi
+            .each-team-member-role Brand Manager

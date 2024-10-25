@@ -24,7 +24,7 @@ block content
                   .each-session-content-tutor-info
                     each tutor in tutors 
                       if `${tutor._id}` == `${session.tutorId}`
-                        a(href=`/student/tutor/personal?filter=${tutor.name}-${tutor.surname}`).each-session-content-tutor-core-info #{tutor.name} #{tutor.surname}
+                        a(href=`/student/tutor/personal?id=${tutor._id}`).each-session-content-tutor-core-info #{tutor.name} #{tutor.surname}
                         .each-session-content-time-info #{session.startTime}-#{session.finishTime}
                         a(href=tutor.link).each-session-content-zoom-link-info Click to join Zoom
                         .each-session-actions-cancel-lesson Cancel lesson
@@ -51,7 +51,7 @@ block content
                   .each-session-content-tutor-info
                     each tutor in tutors 
                       if `${tutor._id}` == `${session.tutorId}`
-                        a(href=`/student/tutor/personal?filter=${tutor.name}-${tutor.surname}`).each-session-content-tutor-core-info #{tutor.name} #{tutor.surname}
+                        a(href=`/student/tutor/personal?id=${tutor._id}`).each-session-content-tutor-core-info #{tutor.name} #{tutor.surname}
                         .each-session-content-time-info #{session.startTime}-#{session.finishTime}
                         .each-session-content-zoom-link-info(style="color: lightgreen") Lesson completed
                 .each-session-content-actions

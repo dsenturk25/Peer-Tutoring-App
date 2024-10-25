@@ -87,7 +87,7 @@ window.onload = () => {
             const coreInfoText = document.createElement('div');
             coreInfoText.className = 'each-tutor-core-info-text';
             const nameLink = document.createElement('a');
-            nameLink.href = `/student/tutor/personal?filter=${tutor.name}-${tutor.surname}`;
+            nameLink.href = `/student/tutor/personal?id=${tutor._id}`;
             nameLink.className = 'each-tutor-core-info-text-title';
             nameLink.textContent = `${tutor.name} ${tutor.surname}`;
             coreInfoText.appendChild(nameLink);
